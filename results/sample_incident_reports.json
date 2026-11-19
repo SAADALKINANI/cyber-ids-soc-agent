@@ -1,0 +1,483 @@
+[
+  {
+    "alert_id": "ALRT-00000",
+    "report": {
+      "summary": "DoS activity from 203.0.113.24 (96 related alerts in 15 min, 75 distinct targets).",
+      "severity": "critical",
+      "techniques": [
+        "T1498",
+        "T1499"
+      ],
+      "rationale": "Classifier: DoS (p=0.7167). Novelty percentile 64.4. Key drivers: dst_bytes=0, dst_host_serror_rate=0.0, count=204.",
+      "actions": [
+        {
+          "type": "contain",
+          "description": "Apply upstream rate-limiting / scrubbing for the targeted service"
+        },
+        {
+          "type": "contain",
+          "description": "Enable SYN cookies and tighten connection timeouts on the target host"
+        },
+        {
+          "type": "investigate",
+          "description": "Check whether the source set is spoofed (TTL / geo spread) before blocking"
+        }
+      ]
+    },
+    "trace": [
+      {
+        "tool": "classify",
+        "args": {},
+        "result": {
+          "predicted_family": "DoS",
+          "confidence": 0.7167,
+          "probabilities": {
+            "normal": 0.0053,
+            "DoS": 0.7167,
+            "Probe": 0.0131,
+            "R2L": 0.0447,
+            "U2R": 0.2203
+          }
+        }
+      },
+      {
+        "tool": "novelty",
+        "args": {},
+        "result": {
+          "novelty_score": 22.85,
+          "percentile_vs_known_traffic": 64.4,
+          "is_novel": false
+        }
+      },
+      {
+        "tool": "explain",
+        "args": {},
+        "result": {
+          "explained_class": "DoS",
+          "top_features": [
+            {
+              "feature": "dst_bytes",
+              "raw_value": 0.0,
+              "contribution": 0.0382
+            },
+            {
+              "feature": "dst_host_serror_rate",
+              "raw_value": 0.0,
+              "contribution": 0.0379
+            },
+            {
+              "feature": "count",
+              "raw_value": 204.0,
+              "contribution": 0.0286
+            },
+            {
+              "feature": "srv_count",
+              "raw_value": 3.0,
+              "contribution": -0.0188
+            },
+            {
+              "feature": "logged_in",
+              "raw_value": 0.0,
+              "contribution": 0.0179
+            }
+          ]
+        }
+      },
+      {
+        "tool": "related_alerts",
+        "args": {},
+        "result": {
+          "src_ip": "203.0.113.24",
+          "count_in_window": 96,
+          "distinct_targets": 75,
+          "services": [
+            "Z39_50",
+            "bgp",
+            "courier",
+            "csnet_ns",
+            "ctf",
+            "daytime",
+            "discard",
+            "domain",
+            "echo",
+            "finger"
+          ]
+        }
+      },
+      {
+        "tool": "attack_kb",
+        "args": {
+          "family": "DoS"
+        },
+        "result": {
+          "family": "DoS",
+          "techniques": [
+            {
+              "id": "T1498",
+              "name": "Network Denial of Service"
+            },
+            {
+              "id": "T1499",
+              "name": "Endpoint Denial of Service"
+            }
+          ],
+          "playbook": [
+            {
+              "type": "contain",
+              "description": "Apply upstream rate-limiting / scrubbing for the targeted service"
+            },
+            {
+              "type": "contain",
+              "description": "Enable SYN cookies and tighten connection timeouts on the target host"
+            },
+            {
+              "type": "investigate",
+              "description": "Check whether the source set is spoofed (TTL / geo spread) before blocking"
+            }
+          ]
+        }
+      }
+    ],
+    "validation_errors": [],
+    "used_fallback": false,
+    "pending_actions": [
+      {
+        "alert_id": "ALRT-00000",
+        "type": "contain",
+        "description": "Apply upstream rate-limiting / scrubbing for the targeted service",
+        "status": "PENDING_HUMAN_APPROVAL"
+      },
+      {
+        "alert_id": "ALRT-00000",
+        "type": "contain",
+        "description": "Enable SYN cookies and tighten connection timeouts on the target host",
+        "status": "PENDING_HUMAN_APPROVAL"
+      },
+      {
+        "alert_id": "ALRT-00000",
+        "type": "investigate",
+        "description": "Check whether the source set is spoofed (TTL / geo spread) before blocking",
+        "status": "PENDING_HUMAN_APPROVAL"
+      }
+    ],
+    "true_attack_type (hidden from agent)": "neptune"
+  },
+  {
+    "alert_id": "ALRT-00001",
+    "report": {
+      "summary": "DoS activity from 203.0.113.24 (74 related alerts in 15 min, 60 distinct targets).",
+      "severity": "critical",
+      "techniques": [
+        "T1498",
+        "T1499"
+      ],
+      "rationale": "Classifier: DoS (p=0.6311). Novelty percentile 98.1. Key drivers: dst_bytes=0, count=41, diff_srv_rate=0.1.",
+      "actions": [
+        {
+          "type": "contain",
+          "description": "Apply upstream rate-limiting / scrubbing for the targeted service"
+        },
+        {
+          "type": "contain",
+          "description": "Enable SYN cookies and tighten connection timeouts on the target host"
+        },
+        {
+          "type": "investigate",
+          "description": "Check whether the source set is spoofed (TTL / geo spread) before blocking"
+        }
+      ]
+    },
+    "trace": [
+      {
+        "tool": "classify",
+        "args": {},
+        "result": {
+          "predicted_family": "DoS",
+          "confidence": 0.6311,
+          "probabilities": {
+            "normal": 0.0181,
+            "DoS": 0.6311,
+            "Probe": 0.0213,
+            "R2L": 0.0628,
+            "U2R": 0.2667
+          }
+        }
+      },
+      {
+        "tool": "novelty",
+        "args": {},
+        "result": {
+          "novelty_score": 156.92,
+          "percentile_vs_known_traffic": 98.1,
+          "is_novel": false
+        }
+      },
+      {
+        "tool": "explain",
+        "args": {},
+        "result": {
+          "explained_class": "DoS",
+          "top_features": [
+            {
+              "feature": "dst_bytes",
+              "raw_value": 0.0,
+              "contribution": 0.7581
+            },
+            {
+              "feature": "count",
+              "raw_value": 41.0,
+              "contribution": 0.6749
+            },
+            {
+              "feature": "diff_srv_rate",
+              "raw_value": 0.1,
+              "contribution": 0.5751
+            },
+            {
+              "feature": "dst_host_same_srv_rate",
+              "raw_value": 0.22,
+              "contribution": 0.5497
+            },
+            {
+              "feature": "dst_host_serror_rate",
+              "raw_value": 0.0,
+              "contribution": 0.3595
+            }
+          ]
+        }
+      },
+      {
+        "tool": "related_alerts",
+        "args": {},
+        "result": {
+          "src_ip": "203.0.113.24",
+          "count_in_window": 74,
+          "distinct_targets": 60,
+          "services": [
+            "Z39_50",
+            "bgp",
+            "csnet_ns",
+            "ctf",
+            "daytime",
+            "discard",
+            "domain",
+            "echo",
+            "finger",
+            "ftp"
+          ]
+        }
+      },
+      {
+        "tool": "attack_kb",
+        "args": {
+          "family": "DoS"
+        },
+        "result": {
+          "family": "DoS",
+          "techniques": [
+            {
+              "id": "T1498",
+              "name": "Network Denial of Service"
+            },
+            {
+              "id": "T1499",
+              "name": "Endpoint Denial of Service"
+            }
+          ],
+          "playbook": [
+            {
+              "type": "contain",
+              "description": "Apply upstream rate-limiting / scrubbing for the targeted service"
+            },
+            {
+              "type": "contain",
+              "description": "Enable SYN cookies and tighten connection timeouts on the target host"
+            },
+            {
+              "type": "investigate",
+              "description": "Check whether the source set is spoofed (TTL / geo spread) before blocking"
+            }
+          ]
+        }
+      }
+    ],
+    "validation_errors": [],
+    "used_fallback": false,
+    "pending_actions": [
+      {
+        "alert_id": "ALRT-00001",
+        "type": "contain",
+        "description": "Apply upstream rate-limiting / scrubbing for the targeted service",
+        "status": "PENDING_HUMAN_APPROVAL"
+      },
+      {
+        "alert_id": "ALRT-00001",
+        "type": "contain",
+        "description": "Enable SYN cookies and tighten connection timeouts on the target host",
+        "status": "PENDING_HUMAN_APPROVAL"
+      },
+      {
+        "alert_id": "ALRT-00001",
+        "type": "investigate",
+        "description": "Check whether the source set is spoofed (TTL / geo spread) before blocking",
+        "status": "PENDING_HUMAN_APPROVAL"
+      }
+    ],
+    "true_attack_type (hidden from agent)": "neptune"
+  },
+  {
+    "alert_id": "ALRT-00002",
+    "report": {
+      "summary": "Probe activity from 203.0.113.35 (22 related alerts in 15 min, 22 distinct targets).",
+      "severity": "high",
+      "techniques": [
+        "T1046",
+        "T1595"
+      ],
+      "rationale": "Classifier: Probe (p=0.8428). Novelty percentile 84.2. Key drivers: dst_host_serror_rate=0.04, count=75, srv_count=1.",
+      "actions": [
+        {
+          "type": "contain",
+          "description": "Add the scanning source to a watch-list; block at perimeter if external"
+        },
+        {
+          "type": "investigate",
+          "description": "Diff discovered open ports against the approved asset baseline"
+        },
+        {
+          "type": "investigate",
+          "description": "Look for follow-on exploitation attempts from the same source in 24h"
+        }
+      ]
+    },
+    "trace": [
+      {
+        "tool": "classify",
+        "args": {},
+        "result": {
+          "predicted_family": "Probe",
+          "confidence": 0.8428,
+          "probabilities": {
+            "normal": 0.0036,
+            "DoS": 0.0052,
+            "Probe": 0.8428,
+            "R2L": 0.0239,
+            "U2R": 0.1246
+          }
+        }
+      },
+      {
+        "tool": "novelty",
+        "args": {},
+        "result": {
+          "novelty_score": 51.07,
+          "percentile_vs_known_traffic": 84.2,
+          "is_novel": false
+        }
+      },
+      {
+        "tool": "explain",
+        "args": {},
+        "result": {
+          "explained_class": "Probe",
+          "top_features": [
+            {
+              "feature": "dst_host_serror_rate",
+              "raw_value": 0.04,
+              "contribution": -0.126
+            },
+            {
+              "feature": "count",
+              "raw_value": 75.0,
+              "contribution": -0.072
+            },
+            {
+              "feature": "srv_count",
+              "raw_value": 1.0,
+              "contribution": 0.062
+            },
+            {
+              "feature": "diff_srv_rate",
+              "raw_value": 1.0,
+              "contribution": 0.0352
+            },
+            {
+              "feature": "dst_host_same_src_port_rate",
+              "raw_value": 0.0,
+              "contribution": -0.0302
+            }
+          ]
+        }
+      },
+      {
+        "tool": "related_alerts",
+        "args": {},
+        "result": {
+          "src_ip": "203.0.113.35",
+          "count_in_window": 22,
+          "distinct_targets": 22,
+          "services": [
+            "other",
+            "private"
+          ]
+        }
+      },
+      {
+        "tool": "attack_kb",
+        "args": {
+          "family": "Probe"
+        },
+        "result": {
+          "family": "Probe",
+          "techniques": [
+            {
+              "id": "T1046",
+              "name": "Network Service Discovery"
+            },
+            {
+              "id": "T1595",
+              "name": "Active Scanning"
+            }
+          ],
+          "playbook": [
+            {
+              "type": "contain",
+              "description": "Add the scanning source to a watch-list; block at perimeter if external"
+            },
+            {
+              "type": "investigate",
+              "description": "Diff discovered open ports against the approved asset baseline"
+            },
+            {
+              "type": "investigate",
+              "description": "Look for follow-on exploitation attempts from the same source in 24h"
+            }
+          ]
+        }
+      }
+    ],
+    "validation_errors": [],
+    "used_fallback": false,
+    "pending_actions": [
+      {
+        "alert_id": "ALRT-00002",
+        "type": "contain",
+        "description": "Add the scanning source to a watch-list; block at perimeter if external",
+        "status": "PENDING_HUMAN_APPROVAL"
+      },
+      {
+        "alert_id": "ALRT-00002",
+        "type": "investigate",
+        "description": "Diff discovered open ports against the approved asset baseline",
+        "status": "PENDING_HUMAN_APPROVAL"
+      },
+      {
+        "alert_id": "ALRT-00002",
+        "type": "investigate",
+        "description": "Look for follow-on exploitation attempts from the same source in 24h",
+        "status": "PENDING_HUMAN_APPROVAL"
+      }
+    ],
+    "true_attack_type (hidden from agent)": "satan"
+  }
+]
