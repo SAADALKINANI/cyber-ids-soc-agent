@@ -17,8 +17,19 @@ from ids.robustness import MahalanobisDetector  # noqa: E402
 st.set_page_config(page_title="SOC Triage Console", layout="wide")
 
 
-@st.cache_resource
+def ensure_data():
+    """Fresh clone: fetch NSL-KDD (~20 MB) from the same mirror as scripts/download_data.sh."""
+    raw = ROOT / "data" / "raw"
+    raw.mkdir(parents=True, exist_ok=True)
+    import urllib.request
+    for f in ("KDDTrain+.txt", "KDDTest+.txt"):
+        if not (raw / f).exists():
+            urllib.request.urlretrieve(f"https://raw.githubusercontent.com/defcom17/NSL_KDD/master/{f}", raw / f)
+
+
+@st.cache_resource(show_spinner="Loading model and NSL-KDD data...")
 def setup():
+    ensure_data()
     ck = torch.load(ROOT / "artifacts" / "ids_model.pt", weights_only=False)
     pre = Preprocessor(**ck["pre"])
     model = FTTransformer(len(NUMERIC), ck["cards"]); model.load_state_dict(ck["state_dict"]); model.eval()

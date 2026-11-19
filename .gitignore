@@ -3,7 +3,8 @@ __pycache__/
 .pytest_cache/
 mlflow.db
 mlruns/
-artifacts/
+artifacts/*
+!artifacts/ids_model.pt
 data/raw/
 data/synthetic_xbd/
 data/*.csv.gz
