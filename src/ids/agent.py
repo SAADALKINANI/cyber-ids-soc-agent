@@ -25,7 +25,7 @@ from typing import Any, Callable, Protocol
 import numpy as np
 import torch
 
-from .attack_kb import ATTACK_TECHNIQUES, FAMILY_TECHNIQUES, PLAYBOOKS, TECHNIQUES
+from .attack_kb import FAMILY_TECHNIQUES, PLAYBOOKS, TECHNIQUES
 from .data import CLASSES, NUMERIC
 
 SYSTEM_PROMPT = """You are a Tier-1 SOC triage analyst for a U.S. federal agency.
