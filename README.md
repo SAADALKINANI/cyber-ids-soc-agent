@@ -74,9 +74,9 @@ alert ─► planner (LLM or deterministic) ─► tools (allow-list only):
 ## Quick start
 ```bash
 pip install -r requirements.txt
-bash scripts/download_data.sh
+streamlit run app.py                    # works right after cloning (trained model is committed; NSL-KDD auto-downloads)
+bash scripts/download_data.sh           # to retrain:
 python scripts/run_pipeline.py          # ~45 min on 2 CPU cores (restart-safe caching); --quick for a 3-min smoke test
-streamlit run app.py                    # SOC console: pick a zero-day / known / benign record, watch the agent triage it
 pytest -q                               # 8 tests incl. PGD constraint checks and the hallucinating-LLM guardrail test
 ```
 
